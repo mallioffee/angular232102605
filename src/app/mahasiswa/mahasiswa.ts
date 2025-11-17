@@ -1,0 +1,46 @@
+import { AfterViewInit, Component } from '@angular/core';
+import { Header } from "../header/header";
+import { Sidebar } from "../sidebar/sidebar";
+import { Footer } from "../footer/footer";
+import { HttpClient } from '@angular/common/http';
+
+declare const $: any;
+
+@Component({
+  selector: 'app-mahasiswa',
+  imports: [Header, Sidebar, Footer],
+  templateUrl: './mahasiswa.html',
+  styleUrl: './mahasiswa.css',
+})
+export class Mahasiswa implements AfterViewInit{
+  data: any;
+  table1: any;
+
+  constructor(private httpClient: HttpClient) {}
+
+  ngAfterViewInit(): void {
+    this.table1 = $("#table1").DataTable();
+
+    this.bindMahasiswa();
+  }
+
+  bindMahasiswa(): void {
+    this.httpClient.get("https://stmikpontianak.cloud/011100862/tampilMahasiswa.php").subscribe((data: any) => {
+      console.table(data);
+      this.table1.clear();
+
+      data.forEach((element: any) => {
+        var tempatTanggalLahir = element.TempatLahir + ", " + element.TanggalLahir;
+
+        const jenisKelaminFormatted = element.JenisKelamin + " " + (
+          (element.JenisKelamin === "Perempuan"|| element.JenisKelamin === "perempuan") ?
+          "<i class='fas fa-venus text-danger'></i>" :
+          (element.JenisKelamin != "undefined") ?
+          "<i class='fas fa-mars text-primary'></i>" : ""
+        );
+
+
+      });
+    });
+  }
+}
