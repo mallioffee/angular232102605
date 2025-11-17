@@ -39,8 +39,21 @@ export class Mahasiswa implements AfterViewInit{
           "<i class='fas fa-mars text-primary'></i>" : ""
         );
 
+        var row = [
+          element.NIM,
+          element.Nama,
+          jenisKelaminFormatted,
+          tempatTanggalLahir,
+          element.JP,
+          element.Alamat,
+          element.StatusNikah,
+          element.TahunMasuk
+        ];
+        this.table1.row.add(row);
 
       });
+
+      this.table1.draw(false);
     });
   }
 }
