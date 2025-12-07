@@ -25,4 +25,5 @@ export class Sidebar implements AfterViewInit {
       });
     });
   }
+  
 }
