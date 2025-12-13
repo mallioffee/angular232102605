@@ -8,6 +8,7 @@ import { Mahasiswa } from './mahasiswa/mahasiswa';
 import { otentikasiGuard } from './otentikasi-guard';
 import { Logout } from './logout/logout';
 import { Forex } from './forex/forex';
+import { Cuaca } from './cuaca/cuaca';
 
 export const routes: Routes = [
     { path: "", redirectTo: "login", pathMatch: "full" },
@@ -19,4 +20,5 @@ export const routes: Routes = [
     { path: "login", component: Login },
     { path: "logout", component: Logout},
     { path: "mahasiswa", component: Mahasiswa, canActivate: [otentikasiGuard]},
+    { path: "cuaca", component: Cuaca, canActivate: [otentikasiGuard]},
 ];
