@@ -1,0 +1,11 @@
+.map-wrapper {
+  width: 100%;
+  height: 60vh; /* bisa 100vh jika mau fullscreen penuh */
+  min-height: 300px;
+  margin-top: 1rem;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
