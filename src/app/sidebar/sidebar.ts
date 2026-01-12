@@ -11,6 +11,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class Sidebar implements AfterViewInit {
   @Input() modulName: string = '';
+  username: string = '';
 
   constructor(
     private el: ElementRef,
@@ -19,6 +20,8 @@ export class Sidebar implements AfterViewInit {
   ) {}
 
   ngAfterViewInit(): void {
+    this.username = this.cookieService.get('userId');
+
     const links = this.el.nativeElement.querySelectorAll('.nav-link');
     links.forEach((link: HTMLElement) => {
       this.renderer.listen(link, 'click', () => {
